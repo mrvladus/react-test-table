@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MaterialTable from "material-table";
+// Import utils
+import Loading from "../utils/Loading";
+import useFetch from "../utils/useFetch";
+import HasError from "../utils/HasError";
 // Import components
-import Loading from "../loading/Loading";
+import Info from "./Info";
+import AddRecord from "./AddRecord";
 
 // Table component
-const Table = () => {
-  //   State
+const Table = ({ urlAddr }) => {
+  // Data state
   const [data, setData] = useState([]);
-  const [hasErrors, setHasErrors] = useState(false);
-  const [loading, setLoading] = useState(false);
 
+  // Define columns of the table
   const columns = [
     { title: "ID", field: "id" },
     { title: "First Name", field: "firstName" },
@@ -19,31 +23,24 @@ const Table = () => {
   ];
 
   // Get data from API
-  useEffect(() => {
-    setLoading(true);
-    fetch(
-      "http://www.filltext.com/?rows=32&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D"
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res);
-        setLoading(false);
-      })
-      .catch((err) => setHasErrors(true));
-  }, []);
-
+  const [loading, hasError] = useFetch(setData, urlAddr);
   return (
-    <div className="mx-auto">
+    <div className="d-flex flex-column align-items-center">
+      <AddRecord data={data} setData={setData} />
       {loading ? (
         <Loading />
+      ) : hasError ? (
+        <HasError />
       ) : (
         <MaterialTable
           columns={columns}
           data={data}
-          title=""
+          detailPanel={(infoData) => {
+            return <Info data={infoData} />;
+          }}
           options={{
             sorting: true,
-            pageSize: 50,
+            pageSizeOptions: [5, 20, 50],
           }}
         />
       )}
