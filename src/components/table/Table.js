@@ -26,23 +26,26 @@ const Table = ({ urlAddr }) => {
   const [loading, hasError] = useFetch(setData, urlAddr);
   return (
     <div className="d-flex flex-column align-items-center">
-      <AddRecord data={data} setData={setData} />
       {loading ? (
         <Loading />
       ) : hasError ? (
         <HasError />
       ) : (
-        <MaterialTable
-          columns={columns}
-          data={data}
-          detailPanel={(infoData) => {
-            return <Info data={infoData} />;
-          }}
-          options={{
-            sorting: true,
-            pageSizeOptions: [5, 20, 50],
-          }}
-        />
+        <div>
+          <AddRecord data={data} setData={setData} />
+          <MaterialTable
+            columns={columns}
+            data={data}
+            title="Dataset"
+            detailPanel={(infoData) => {
+              return <Info data={infoData} />;
+            }}
+            options={{
+              sorting: true,
+              pageSizeOptions: [5, 20, 50],
+            }}
+          />
+        </div>
       )}
     </div>
   );

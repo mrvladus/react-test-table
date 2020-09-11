@@ -3,9 +3,16 @@ import { Button } from "@material-ui/core";
 
 const HasError = () => {
   return (
-    <div>
-      <h1>Error occured!</h1>
-      <Button onClick={() => window.location.reload()}>Reload</Button>
+    <div className="d-flex mt-5">
+      <h1 className="mr-4">Error occured!</h1>
+      <Button
+        variant="contained"
+        color="secondary"
+        size="small"
+        onClick={() => window.location.reload()}
+      >
+        Reload
+      </Button>
     </div>
   );
 };

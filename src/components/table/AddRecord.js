@@ -48,7 +48,7 @@ const AddRecord = ({ data, setData }) => {
           className="my-4"
           onClick={() => setVisibleForm(true)}
         >
-          ADD NEW RECORD
+          ADD
         </Button>
       ) : (
         <form className="my-4" onSubmit={submitHandler}>

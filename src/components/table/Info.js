@@ -2,7 +2,7 @@ import React from "react";
 
 const Info = ({ data }) => {
   return (
-    <div>
+    <div className="m-3">
       <p>
         Выбран пользователь:{" "}
         <b>
@@ -11,7 +11,7 @@ const Info = ({ data }) => {
       </p>
       <p>Описание:</p>
       <p>
-        <textarea rows={5} cols={100}>
+        <textarea rows={4} cols={80}>
           {data.description}
         </textarea>
       </p>
