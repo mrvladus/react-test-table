@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 
+// Error message
 const HasError = () => {
   return (
     <div className="d-flex mt-5">
@@ -16,4 +17,5 @@ const HasError = () => {
     </div>
   );
 };
+
 export default HasError;

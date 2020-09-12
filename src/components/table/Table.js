@@ -37,12 +37,12 @@ const Table = ({ urlAddr }) => {
             columns={columns}
             data={data}
             title="Dataset"
-            detailPanel={(infoData) => {
-              return <Info data={infoData} />;
-            }}
             options={{
               sorting: true,
               pageSizeOptions: [5, 20, 50],
+            }}
+            detailPanel={(infoData) => {
+              return <Info data={infoData} />;
             }}
           />
         </div>
