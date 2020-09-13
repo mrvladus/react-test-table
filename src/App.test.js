@@ -9,7 +9,7 @@ test("Buttons Big and Small showing", async () => {
   expect(getByText("Big")).toBeInTheDocument();
 });
 
-test("Button Small clicked and Table with button ADD renders", async () => {
+test("Button Small clicked, Table renders, ADD clicked, Input form renders", async () => {
   const { getByText } = render(<App />);
 
   fireEvent.click(getByText("Small"));
@@ -19,4 +19,7 @@ test("Button Small clicked and Table with button ADD renders", async () => {
 
   const table = getByText("Dataset");
   expect(table).toBeInTheDocument();
+
+  fireEvent.click(add);
+  expect(getByText("ADD RECORD")).toBeInTheDocument();
 });
