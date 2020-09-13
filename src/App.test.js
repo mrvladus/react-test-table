@@ -1,11 +1,6 @@
 import React from "react";
 import "jest-canvas-mock";
-import {
-  render,
-  fireEvent,
-  waitForElement,
-  wait,
-} from "@testing-library/react";
+import { render, fireEvent, waitForElement } from "@testing-library/react";
 import App from "./App";
 
 test("Buttons Big and Small showing", async () => {
