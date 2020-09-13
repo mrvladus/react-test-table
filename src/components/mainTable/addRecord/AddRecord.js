@@ -40,7 +40,7 @@ const AddRecord = ({ data, setData }) => {
     setVisibleForm(false);
   };
   return (
-    <div>
+    <div id="add-record">
       {!visibleForm ? (
         <Button
           variant="contained"

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import MaterialTable from "material-table";
 // Import utils
-import Loading from "../utils/Loading";
-import useFetch from "../utils/useFetch";
-import HasError from "../utils/HasError";
+import Loading from "../../utils/loading/Loading";
+import useFetch from "../../utils/useFetch/useFetch";
+import HasError from "../../utils/hasError/HasError";
 // Import components
-import Info from "./Info";
-import AddRecord from "./AddRecord";
+import Info from "../info/Info";
+import AddRecord from "../addRecord/AddRecord";
 
 // Table component
 const Table = ({ urlAddr }) => {
@@ -25,7 +25,10 @@ const Table = ({ urlAddr }) => {
   // Get data from API
   const [loading, hasError] = useFetch(setData, urlAddr);
   return (
-    <div className="d-flex flex-column align-items-center">
+    <div
+      className="d-flex flex-column align-items-center"
+      data-testid="test-table"
+    >
       {loading ? (
         <Loading />
       ) : hasError ? (
